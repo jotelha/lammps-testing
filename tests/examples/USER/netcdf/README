@@ -1,0 +1,34 @@
+# Tests for USER-NETCDF functionality
+
+Copyright (C) 2018, 2019 IMTEK Simulation
+Author: Johannes Hoermann, johannes.hoermann@imtek.uni-freiburg.de
+
+USER-NETCDF can be built with NetCDF or PNetCDF library, or both.
+Builds with NetCDF library offer the "netcdf" dump style, builds
+with PNetCDF offer "netcdf/mpiio".
+
+## Content
+
+* comp.sh, diff_avgsqr_ref.txt, lmp_netcdf_avgsqr.nco: see section "Manual testing" below
+* in.header: test system common to all test cases, taken from standard LJ benchmark
+* in.netcdf.*: test cases, see below
+
+## Manual testing
+
+For intense manual testing, the bash script "comp.sh" together
+with ncap2 script "lmp_netcdf_avgsqr.nco" form an example on 
+how to compare output NetCDF trajectories by evaluating the 
+root mean square average of differences in coordinates,
+velocities and forces. NCO operators are required for that
+purpose.
+
+## Test cases:
+
+* in.netcdf.standard                dump_style netcdf
+* in.netcdf.mpiio                   dump_style netcdf/mpiio
+* in.netcdf.compute                 custom compute in NetCDF dump
+* in.netcdf.compute.wildcard        custom compute by wildcard in NetCDF dump (always fails with internal error)
+* in.netcdf.variable                custom variable in NetCDF dump
+* in.netcdf.thermo                  append thermo data to NetCDF dump
+* in.netcdf.thermo.variable         append thermo data with custom variable to NetCDF dump
+* in.netcdf.thermo.variable.compute append thermo data with custom variable and custom compute (latter by wildcard in thermo_style) to NetCDF dump

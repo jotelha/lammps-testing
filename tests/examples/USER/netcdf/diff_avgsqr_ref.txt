@@ -1,0 +1,16 @@
+netcdf diff_avgsqr {
+  variables:
+    float favgsqr ;
+
+    float vavgsqr ;
+
+    float xavgsqr ;
+
+  data:
+    favgsqr = 0 ;
+
+    vavgsqr = 0 ;
+
+    xavgsqr = 0 ;
+
+} // group /

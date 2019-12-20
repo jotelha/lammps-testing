@@ -1,0 +1,21 @@
+// lmp_netcdf_avgsqr.nco
+//
+// Johannes Hörmann, December 2019, johannes.hoermann@imtek.uni-freiburg.de
+//
+// root mean squares average of coordinates, velocities, forces
+// across all frame, atoms and spatial dimensions
+//
+// execute with
+//  ncap2 -v -O -S lmp_netcdf_avgsqr.nco.nco default.nc out.nc
+//
+// xavgsqr=0.f;
+// vavgsqr=0.f;
+// favgsqr=0.f:
+
+xavgsqr=coordinates.avgsqr($frame,$atom,$spatial);
+vavgsqr=velocities.avgsqr($frame,$atom,$spatial);
+favgsqr=forces.avgsqr($frame,$atom,$spatial);
+
+// float coordinates(frame, atom, spatial) ;
+// float velocities(frame, atom, spatial) ;
+// float forces(frame, atom, spatial) ;
